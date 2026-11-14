@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -6,261 +8,194 @@
 
 body {
   font-family: 'Segoe UI', 'Roboto', system-ui, sans-serif;
-  background: radial-gradient(circle at 10% 20%, #0b0f2a, #020617);
+  background: #000;
   color: #e9f1fc;
   line-height: 1.6;
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 1.5rem;
-  position: relative;
   overflow-x: hidden;
 }
 
-body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: 
-    radial-gradient(2px 2px at 15px 80px, #fff, rgba(0,0,0,0)),
-    radial-gradient(2px 2px at 120px 20px, #fff, rgba(0,0,0,0)),
-    radial-gradient(3px 3px at 250px 450px, #f8f9ff, rgba(0,0,0,0)),
-    radial-gradient(2px 2px at 500px 700px, #fff, rgba(0,0,0,0)),
-    radial-gradient(3px 3px at 800px 200px, #fff, rgba(0,0,0,0)),
-    radial-gradient(2px 2px at 1100px 550px, #fff, rgba(0,0,0,0)),
-    radial-gradient(2px 2px at 1300px 100px, #fff, rgba(0,0,0,0)),
-    radial-gradient(3px 3px at 150px 900px, #fff, rgba(0,0,0,0)),
-    radial-gradient(2px 2px at 900px 950px, #fff, rgba(0,0,0,0));
-  background-repeat: no-repeat;
-  background-size: 200px 200px;
-  opacity: 0.7;
-  z-index: 0;
-  pointer-events: none;
+h1, h2, .btn {
+  font-family: 'Alfa Slab One', Georgia, serif;
+  font-weight: 400;
+  text-transform: uppercase;
 }
 
-.card {
-  max-width: 1000px;
-  width: 100%;
-  background: rgba(10, 20, 40, 0.65);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(100, 180, 255, 0.3);
-  border-radius: 3rem 3rem 2rem 2rem;
-  box-shadow: 0 25px 50px -8px rgba(0, 0, 0, 0.8), 0 0 0 2px rgba(70, 130, 200, 0.2) inset;
-  padding: 3rem 2.5rem;
+/* ---------- Cambio de pantalla ---------- */
+.info { display: none; }
+body.ver-info .inicio { display: none; }
+body.ver-info .info { display: block; }
+body.ver-info { align-items: flex-start; padding: 2rem 1.5rem 4rem; }
+
+/* ---------- Pantalla 1: portada ---------- */
+.inicio {
   position: relative;
   z-index: 2;
-  transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+  text-align: center;
 }
 
-.card::before {
-  content: '✦ ✦ ✦';
-  position: absolute;
-  top: -18px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #0a1a2f;
-  color: #aad0ff;
-  font-size: 1.8rem;
-  letter-spacing: 12px;
-  padding: 0 1.5rem;
+.inicio h1 {
+  font-size: clamp(2.4rem, 8vw, 5rem);
+  line-height: 1.15;
+  letter-spacing: 0.03em;
+  color: #fff;
+}
+
+.btn {
+  padding: 0.7rem 2.8rem;
+  border: 1px solid #fff;
   border-radius: 60px;
-  text-shadow: 0 0 12px #9ac8ff;
-  border: 1px solid #3d6a9b;
-  box-shadow: 0 0 25px rgba(100, 180, 255, 0.6);
+  color: #fff;
+  font-size: 1.1rem;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn:hover {
+  background: #fff;
+  color: #000;
+}
+
+.btn:focus-visible {
+  outline: 2px dashed #fff;
+  outline-offset: 6px;
+}
+
+/* ---------- Pantalla 2: información ---------- */
+.info {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 760px;
+  text-align: center;
+}
+
+.volver {
+  display: inline-block;
+  margin-bottom: 2.5rem;
+  color: #fff;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.volver:hover,
+.volver:focus-visible {
+  border-bottom-color: #fff;
+  outline: none;
 }
 
 .header {
-  text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 
-.nasa-badge {
-  display: inline-block;
-  background: #0b1d3a;
-  padding: 0.35rem 1.2rem;
-  border-radius: 40px;
-  font-weight: 500;
-  font-size: 0.85rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
+.nasa {
+  font-size: 0.9rem;
+  letter-spacing: 0.15em;
   color: #b3d9ff;
-  border: 1px solid #3366aa;
-  margin-bottom: 1.2rem;
-  box-shadow: 0 0 15px rgba(51, 102, 170, 0.5);
+  margin-bottom: 0.8rem;
 }
 
-h1 {
-  font-size: 3.8rem;
-  font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-  background: linear-gradient(to right, #eef7ff, #aad0ff, #7eb9ff);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  text-shadow: 0 0 20px rgba(120, 180, 255, 0.6);
-  margin-bottom: 0.5rem;
+.info h1 {
+  font-size: clamp(2rem, 6vw, 3.4rem);
+  line-height: 1.15;
+  letter-spacing: 0.03em;
+  color: #fff;
+  margin-bottom: 0.8rem;
 }
 
 .subhead {
-  font-size: 1.4rem;
-  font-weight: 300;
   color: #c2dcff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-  margin-top: 0.5rem;
-}
-
-.subhead span {
-  background: #142b4a;
-  padding: 0.2rem 1rem;
-  border-radius: 40px;
-  font-size: 1rem;
-  font-weight: 400;
-  border: 1px solid #3c6e9c;
 }
 
 .intro {
-  background: rgba(5, 15, 30, 0.6);
-  border-left: 6px solid #5f9eff;
-  border-radius: 1.5rem;
-  padding: 2rem 2rem;
-  margin: 2.2rem 0;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(120, 180, 255, 0.3) inset;
-  font-size: 1.18rem;
+  font-size: 1.1rem;
   color: #d9eaff;
+  margin-bottom: 3rem;
 }
 
-.intro p {
-  margin-bottom: 1.2rem;
+.intro p + p {
+  margin-top: 1.2rem;
 }
 
-.intro p:last-child {
-  margin-bottom: 0;
-}
-
-.highlight {
-  color: #b3dcff;
+.intro strong {
+  color: #fff;
   font-weight: 600;
-  background: linear-gradient(120deg, transparent 0%, rgba(90, 160, 255, 0.2) 100%);
-  padding: 0.1rem 0.3rem;
-  border-radius: 6px;
 }
 
 .categories {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 2rem;
-  margin: 2.5rem 0 1.8rem;
+  gap: 3rem;
+  margin-bottom: 3.5rem;
 }
 
 .category {
-  flex: 1 1 200px;
-  background: rgba(18, 35, 60, 0.8);
-  border-radius: 2rem 2rem 2rem 0.5rem;
-  padding: 1.5rem 1.2rem;
-  border: 1px solid #2e5780;
-  box-shadow: 0 10px 20px -5px #00000060;
-  transition: all 0.25s;
+  flex: 1 1 280px;
 }
 
-.category:hover {
-  transform: translateY(-5px);
-  border-color: #7eb9ff;
-  box-shadow: 0 20px 30px -8px #0a1e3b, 0 0 20px rgba(100, 180, 255, 0.5);
-}
-
-.category h3 {
-  font-size: 1.8rem;
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  margin-bottom: 1rem;
+.category h2 {
+  font-size: 1.4rem;
+  letter-spacing: 0.03em;
   color: #fff;
-  border-bottom: 2px solid #2f5c8c;
-  padding-bottom: 0.6rem;
-}
-
-.category h3 i {
-  font-style: normal;
-  font-size: 2rem;
-  filter: drop-shadow(0 0 10px #5f9eff);
+  margin-bottom: 0.6rem;
 }
 
 .category p {
-  font-size: 1rem;
   color: #b9d4f0;
-  margin-bottom: 1rem;
 }
 
-.tag {
-  display: inline-block;
-  background: #0e1f33;
-  padding: 0.3rem 1rem;
-  border-radius: 40px;
-  font-size: 0.85rem;
-  font-weight: 500;
+.category .temas {
+  margin-top: 0.8rem;
+  font-size: 0.9rem;
   color: #bedcff;
-  border: 1px solid #3e6d9b;
-  margin-right: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.cta {
-  display: flex;
-  justify-content: center;
-  margin: 2.5rem 0 1rem;
-}
-
-.btn {
-  background: linear-gradient(145deg, #1e3e6b, #0c1e33);
-  color: #e4f0ff;
-  border: 1px solid #5f9eff;
-  padding: 1rem 3rem;
-  border-radius: 60px;
-  font-weight: 600;
-  font-size: 1.2rem;
-  letter-spacing: 1px;
-  cursor: default;
-  box-shadow: 0 8px 0 #0b1a2b, 0 15px 30px #00000060;
-  transition: 0.1s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.8rem;
-  pointer-events: none;
-}
-
-.btn i {
-  font-style: normal;
-  font-size: 1.5rem;
 }
 
 .footer-note {
-  text-align: center;
-  margin-top: 2.2rem;
   font-size: 0.9rem;
   color: #8fb3d6;
-  border-top: 1px solid #1f3a5a;
-  padding-top: 1.6rem;
 }
 
-@media (max-width: 650px) {
-  body { padding: 1rem; }
-  .card { padding: 2rem 1.2rem; border-radius: 2rem; }
-  h1 { font-size: 2.4rem; }
-  .subhead { font-size: 1.1rem; }
-  .intro { padding: 1.5rem; font-size: 1rem; }
-  .category h3 { font-size: 1.4rem; }
-  .card::before { font-size: 1.2rem; letter-spacing: 8px; top: -14px; }
-  .btn { padding: 0.9rem 1.8rem; font-size: 1rem; }
+.footer-sub {
+  opacity: 0.7;
+  font-size: 0.8rem;
+}
+
+/* ---------- Estrellas que caen ---------- */
+.sky {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.star {
+  position: absolute;
+  top: -20vh;
+  border-radius: 999px;
+  background: linear-gradient(to bottom, transparent, #fff);
+  opacity: 0;
+  transform: rotate(25deg);
+  animation: caer linear infinite;
+}
+
+@keyframes caer {
+  0%   { transform: rotate(25deg) translateY(0);     opacity: 0; }
+  10%  { opacity: 1; }
+  80%  { opacity: 1; }
+  100% { transform: rotate(25deg) translateY(150vh); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .star { animation: none; top: var(--y, 40vh); opacity: 0.8; }
 }
